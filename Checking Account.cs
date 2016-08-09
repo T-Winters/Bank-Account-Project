@@ -13,12 +13,10 @@ namespace Bank_Account_Project
             this.balance = 10000;
         }
                
-        public void CheckingAccountBalance()
+        public override void AccountBalance()
         {
-            Console.Clear();
             Console.WriteLine("Checking Account Balance");
-            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance +"\n\n");
-            Exit();                        
+            Console.WriteLine("\n\n\t" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance +"\n\n");
         }
 
         public override void Transaction()
@@ -40,12 +38,10 @@ namespace Bank_Account_Project
             this.balance = 20000;
         }
 
-        public void ReserveAccountBalance()
+        public override void AccountBalance()
         {
-            Console.Clear();
             Console.WriteLine("Reserve Account Balance");
-            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
-            Exit();
+            Console.WriteLine("\n\n\t" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
         }
 
         public override void Transaction()
@@ -66,12 +62,10 @@ namespace Bank_Account_Project
             this.balance = 50000;
         }
 
-        public void SavingsAccountBalance()
+        public override void AccountBalance()
         {
-            Console.Clear();
             Console.WriteLine("Savings Account Balance");
-            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
-            Exit();
+            Console.WriteLine("\n\n\t" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
         }
 
         public override void Transaction()

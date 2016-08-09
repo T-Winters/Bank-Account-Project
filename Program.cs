@@ -11,10 +11,10 @@ namespace Bank_Account_Project
     {        
         static void Main(string[] args)
         {
-            Account account = new Account("Chalupa Batman", "8765309-00", "Main");
-            Checking_Account checking_account = new Checking_Account("Chalupa Batman", "8765309-01");
-            Reserve_Account reserve_account = new Reserve_Account("Chalupa Batman", "8765309-02");
-            Savings_Account savings_account = new Savings_Account("Chalupa Batman", "8765309-03");
+            Account account = new Account("Chalupa Batman", "8675309-00", "Main");
+            Checking_Account checking_account = new Checking_Account("Chalupa Batman", "8675309-01");
+            Reserve_Account reserve_account = new Reserve_Account("Chalupa Batman", "8675309-02");
+            Savings_Account savings_account = new Savings_Account("Chalupa Batman", "8675309-03");
 
 
             while (true)
@@ -29,7 +29,6 @@ namespace Bank_Account_Project
                     "[5] Sign Out\n");
 
                 int homeOption = 0;
-
                 string homeChoice = Console.ReadLine();
                 if (homeChoice == "1" || homeChoice == "2" || homeChoice == "3" || homeChoice == "4" || homeChoice == "5")
                 {
@@ -41,11 +40,11 @@ namespace Bank_Account_Project
                     account.MyInfo();
                 }
                 else if (homeOption == 2)
-                {
+                {                                    
                     Console.Clear();
-                    checking_account.CheckingAccountBalance();
-                    reserve_account.ReserveAccountBalance();
-                    savings_account.SavingsAccountBalance();
+                    checking_account.AccountBalance();
+                    reserve_account.AccountBalance();
+                    savings_account.AccountBalance();
                     Console.WriteLine("\n");
                     account.Exit();
                 }
@@ -66,21 +65,21 @@ namespace Bank_Account_Project
                         Console.Clear();
                         Console.WriteLine("Checking Account Transaction\n\n");
                         checking_account.Transaction();
-                        checking_account.CheckingAccountBalance();
+                        checking_account.AccountBalance();
                     }
                     else if (depositOption == 2)
                     {
                         Console.Clear();
                         Console.WriteLine("Reserve Account Transaction\n\n");
                         reserve_account.Transaction();
-                        reserve_account.ReserveAccountBalance();
+                        reserve_account.AccountBalance();
                     }
                     else if (depositOption == 3)
                     {
                         Console.Clear();
                         Console.WriteLine("Savings Account Transaction\n\n");
                         savings_account.Transaction();
-                        savings_account.SavingsAccountBalance();
+                        savings_account.AccountBalance();
                     }
                     else if (depositOption == 4)
                     {
@@ -98,6 +97,7 @@ namespace Bank_Account_Project
                 }
                 else if (homeOption == 4)
                 {
+                    Console.Clear();
                     Console.WriteLine("Select an account to withdraw from: \n\n");
                     Console.WriteLine("[1] Checking Account\n[2] Reserve Account\n[3] Savings Account\n[4] Home\n[5] Sign Out");
 
@@ -113,21 +113,21 @@ namespace Bank_Account_Project
                         Console.Clear();
                         Console.WriteLine("Checking Account Transaction\n\n");
                         checking_account.Transaction();
-                        checking_account.CheckingAccountBalance();
+                        checking_account.AccountBalance();
                     }
                     else if (withdrawOption == 2)
                     {
                         Console.Clear();
                         Console.WriteLine("Reserve Account Transaction\n\n");
                         reserve_account.Transaction();
-                        reserve_account.ReserveAccountBalance();
+                        reserve_account.AccountBalance();
                     }
                     else if (withdrawOption == 3)
                     {
                         Console.Clear();
                         Console.WriteLine("Savings Account Transaction\n\n");
                         savings_account.Transaction();
-                        savings_account.SavingsAccountBalance();
+                        savings_account.AccountBalance();
                     }
                     else if (withdrawOption == 4)
                     {

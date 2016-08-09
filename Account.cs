@@ -23,7 +23,7 @@ namespace Bank_Account_Project
        public int zipCode = 90210;
        public string eMail = "ChalupaBatman@virtualbank.com";
        public string phoneNumber = "281-330-8004";
-
+        //properties
         public string Address
         {
             get { return this.address; }
@@ -59,8 +59,6 @@ namespace Bank_Account_Project
             get { return this.phoneNumber; }
             set { this.phoneNumber = value; }
         }
-        //Properties
-
 
         public string AccountName
         {
@@ -184,6 +182,12 @@ namespace Bank_Account_Project
                 Console.WriteLine("\n[1] Yes\n[2] No");
                 Console.ReadLine();
             }                       
+        }
+
+        public virtual void AccountBalance()
+        {
+            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
+            Exit();
         }
 
         public virtual void Transaction()
