@@ -103,69 +103,8 @@ namespace Bank_Account_Project
             this.accountName = accountName;
             this.accountNumber = accountNumber;
             this.accountType = accountType;
-        }
-
-
-    /*    public void Home()
-        {
-            Console.Clear();
-            Console.WriteLine("Welcome " + accountName + "!\n\n" +
-                "[1] My Info\n" +
-                "[2] View My Account Balance\n" +
-                "[3] Deposit Funds\n" +
-                "[4] Withdraw funds\n" +
-                "[5] Sign Out\n");
-
-            int homeOption = 0;
-
-            string homeChoice = Console.ReadLine();
-            if (homeChoice == "1" || homeChoice == "2" || homeChoice == "3" || homeChoice == "4" || homeChoice == "5")
-            {
-                homeOption = Convert.ToInt32(homeChoice);
-            }
-
-            if (homeOption == 1)
-            {
-                MyInfo();
-            }
-            else if (homeOption == 2)
-            {
-                MyAccountBalance();
-            }
-            else if (homeOption == 3)
-            {
-                DepositMenu();
-            }
-            else if (homeOption == 4)
-            {
-                WithdrawMenu();
-            }
-            else if (homeOption == 5)
-            {
-                Console.WriteLine("Are you sure you want to sign out?" +
-                    "Press enter to sign out. If you do not wish to sign out, press any other key.");
-
-                string exit = Console.ReadKey().Key.ToString();
-                if (exit == "")
-                {
-                    Console.WriteLine(accountName + "signed out.");
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    Home();
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("Sorry, that is not an option." +
-                                    "\nPress any key to continue, then select from options 1 - 5.");
-                Console.ReadKey();
-                Home();
-            }
-        }
-     */
+        }        
+     
         public void MyInfo()
         {
             Console.Clear();
@@ -178,104 +117,109 @@ namespace Bank_Account_Project
                 this.eMail + "\n" +
                 this.phoneNumber);
 
-            Console.WriteLine("\n[1] Home" +
-                "\n[2] Sign Out.");
-
-            int returnHomeOption = 0;
-            string returnHomeChoice = Console.ReadLine();
-            if (returnHomeChoice == "1" || returnHomeChoice == "2")
-            {
-                returnHomeOption = Convert.ToInt32(returnHomeChoice);
-            }
-
-            if (returnHomeOption == 1)
-            {
-                //*******************************************Home();
-            }
-            else if (returnHomeOption == 2)
-            {
-                Console.WriteLine("Are you sure you want to sign out?" +
-                    "Press enter to sign out. If you do not wish to sign out, press any other key.");
-
-                string exit = Console.ReadKey().Key.ToString();
-                if (exit == "")
-                {
-                    Console.WriteLine(accountName + "signed out.");
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    MyInfo();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Sorry, that is not an option." +
-                    "\nPress any key to continue, then select from options 1 - 2.");
-                Console.ReadKey();
-                MyInfo();
-            }
+            Exit();
         }
 
-        public void MyAccountBalance()
+        public virtual void Home()
         {          
-            Console.WriteLine("\n[1] Home" +
-                "\n[2] Sign Out");
+            
+        }
 
-            int balanceOption = 0;
-
-            Console.WriteLine("\n\n[1] Home\n[2] Sign Out");
-            string balanceChoice = Console.ReadLine();
-            if (balanceChoice == "1" || balanceChoice == "2")
+        public virtual void Exit()
+        {
             {
-                balanceOption = Convert.ToInt32(balanceChoice);
-            }
+                Console.WriteLine("\n[1] Home\n[2] Sign Out");
 
-            if (balanceOption == 1)
-            {
-               //******************************************************Home();
-            }
-            else if (balanceOption == 2)
-            {
-                Console.WriteLine("Are you sure you want to sign out?" +
-                    "Press enter to sign out. If you do not wish to sign out, press any other key.");
+                int exit = 0;
 
-                string exit = Console.ReadKey().Key.ToString();
-                if (exit == "")
+                string exitChoice = Console.ReadLine();
+                if (exitChoice == "1" || exitChoice == "2")
                 {
-                    Console.WriteLine(accountName + "signed out.");
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    MyAccountBalance();
+                    exit = Convert.ToInt32(exitChoice);
                 }
 
-            }
-            else
-            {
-                Console.WriteLine("Sorry, that is not an option." +
-                    "\nPress any key to continue, then select from options 1 - 2.");
-                Console.ReadKey();
-                MyAccountBalance();
+                if (exit == 1)
+                {
+                    Home();
+                }
+                else if (exit == 2)
+                {
+                    SignOut();                    
+                }
+                
             }
         }
 
-        public void DepositMenu()
+        public void NotAnOption()
+        {
+            Console.WriteLine("Sorry, that is not an option." +
+                                            "\nPress any key to continue, then select from options 1 - 5.");
+            Console.ReadKey();
+            Console.ReadLine();
+        }
+
+        public void SignOut()
+        {
+            Console.WriteLine("Are you sure you want to sign out?" +
+                        "\n[1] Yes\n[2] No");
+            int signOut = 0;
+            string signOutChoice = Console.ReadLine();
+            if (signOutChoice == "1" || signOutChoice == "2" || signOutChoice == "3" || signOutChoice == "4" || signOutChoice == "5")
+            {
+                signOut = Convert.ToInt32(signOutChoice);
+            }
+            if (signOut == 1)
+            {
+                Environment.Exit(0);
+
+            }
+            else if (signOut == 2)
+            {
+                Console.Clear();
+                Home();
+            }
+            else
+            {
+                Console.WriteLine("\nSorry, that is not an option.");
+                Console.WriteLine("\n[1] Yes\n[2] No");
+                Console.ReadLine();
+            }                       
+        }
+
+        public virtual void Transaction()
         {
             Console.Clear();
+            Console.WriteLine("Pick a type of transaction to be made.");
+            Console.WriteLine("\n\n[1] Deposit\n[2] Withdraw");
 
-            Console.WriteLine("Which account would you like to make a deposit to?");
-            Console.WriteLine("\n[1] Checking Account\n[2] Reserve Account\n[3] Savings Account\n\n[4] Home\n[5] Sign Out");
+            int transaction = int.Parse(Console.ReadLine());
+            if (transaction == 1)
+            {
+                Console.WriteLine("Enter Deposit Amount: ");
+                int depositAmount = int.Parse(Console.ReadLine());
+                this.deposit = (depositAmount);
+                this.balance += this.deposit;
+            }
+            else if (transaction == 2)
+            {
+                Console.WriteLine("Enter Withdraw Amount?");
+                int withdrawAmount = int.Parse(Console.ReadLine());
+                this.withdraw = (withdrawAmount);
+                this.balance -= this.withdraw;
+            }
+            else
+            {
+                Console.WriteLine("Sorry, that is not an option." +
+                    "Press any key to start a new transaction");
+                Console.ReadKey();
+                Transaction();
+            }
+            Console.WriteLine("\nYour transaction has been processed." +
+                "Press any key to view your new account balance");
+            Console.ReadKey();
         }     
         
-        public void WithdrawMenu()
-        {
-            Console.Clear();
-
-            Console.WriteLine("Which account would you like to make a withdraw from?");
-            Console.WriteLine("\n[1] Checking Account\n[2] Reserve Account\n[3] Savings Account\n\n[4] Home\n[5] Sign Out");
-        }               
+                       
         
     }
     
