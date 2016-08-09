@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Bank_Account_Project
 {
     public class Checking_Account : Account
-    {                       
+    {                      
+
         public Checking_Account(string name, string accountNumber) : base(name, accountNumber, "Checking")
         {
             this.balance = 10000;
@@ -15,6 +16,7 @@ namespace Bank_Account_Project
                
         public override void AccountBalance()
         {
+            Console.Clear();
             Console.WriteLine("Checking Account Balance");
             Console.WriteLine("\n\n\t" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance +"\n\n");
         }
@@ -22,6 +24,7 @@ namespace Bank_Account_Project
         public override void Transaction()
         {
             base.Transaction();
+            AccountBalance();                
         }
 
         public override void Exit()
@@ -40,6 +43,7 @@ namespace Bank_Account_Project
 
         public override void AccountBalance()
         {
+            Console.Clear();
             Console.WriteLine("Reserve Account Balance");
             Console.WriteLine("\n\n\t" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
         }
@@ -47,6 +51,7 @@ namespace Bank_Account_Project
         public override void Transaction()
         {
             base.Transaction();
+            AccountBalance();
         }
 
         public override void Exit()
@@ -64,6 +69,7 @@ namespace Bank_Account_Project
 
         public override void AccountBalance()
         {
+            Console.Clear();
             Console.WriteLine("Savings Account Balance");
             Console.WriteLine("\n\n\t" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
         }
@@ -71,6 +77,7 @@ namespace Bank_Account_Project
         public override void Transaction()
         {
             base.Transaction();
+            AccountBalance();
         }
 
         public override void Exit()

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Bank_Account_Project
@@ -10,19 +12,19 @@ namespace Bank_Account_Project
     public class Account
     {
         
-       public string accountName;
-       public string accountNumber;
-       public string accountType;
-       public double balance;
-       public double deposit;
-       public double withdraw;
+        public string accountName;
+        public string accountNumber;
+        public string accountType;
+        public double balance;
+        public double deposit;
+        public double withdraw;
 
-       public string address = "124 Conch Street, Bikini Bottom";
-       public string city = "Cleveland";
-       public string state = "Ohio";
-       public int zipCode = 90210;
-       public string eMail = "ChalupaBatman@virtualbank.com";
-       public string phoneNumber = "281-330-8004";
+        public string address = "124 Conch Street, Bikini Bottom";
+        public string city = "Cleveland";
+        public string state = "Ohio";
+        public int zipCode = 90210;
+        public string eMail = "ChalupaBatman@virtualbank.com";
+        public string phoneNumber = "281-330-8004";
         //properties
         public string Address
         {
@@ -101,7 +103,7 @@ namespace Bank_Account_Project
             this.accountName = accountName;
             this.accountNumber = accountNumber;
             this.accountType = accountType;
-        }        
+        }     
      
         public void MyInfo()
         {
@@ -186,6 +188,7 @@ namespace Bank_Account_Project
 
         public virtual void AccountBalance()
         {
+            Console.Clear();
             Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
             Exit();
         }
@@ -200,16 +203,40 @@ namespace Bank_Account_Project
             if (transaction == 1)
             {
                 Console.WriteLine("Enter Deposit Amount: ");
-                int depositAmount = int.Parse(Console.ReadLine());
+                double depositAmount = Convert.ToDouble(Console.ReadLine());
                 this.deposit = (depositAmount);
                 this.balance += this.deposit;
+
+                if (depositAmount < 1)
+                {
+                    Console.WriteLine("Deposits must be a minimum of $1 (one U.S. dollar).");
+                    Console.WriteLine("\nPress any key to start a new transaction.");
+                    Console.ReadKey();
+                    Transaction();
+                }
+                else
+                {
+                    
+                }
             }
             else if (transaction == 2)
             {
                 Console.WriteLine("Enter Withdraw Amount?");
-                int withdrawAmount = int.Parse(Console.ReadLine());
+                double withdrawAmount = Convert.ToDouble(Console.ReadLine());
                 this.withdraw = (withdrawAmount);
                 this.balance -= this.withdraw;
+
+                if (withdrawAmount < 1)
+                {
+                    Console.WriteLine("Withdrawls must be a minimum of $1 (one U.S. dollar)");
+                    Console.WriteLine("\nPress any key to start a new transaction.");
+                    Console.ReadKey();
+                    Transaction();
+                }
+                else
+                {
+                    
+                }
             }
             else
             {
@@ -219,7 +246,7 @@ namespace Bank_Account_Project
                 Transaction();
             }
             Console.WriteLine("\nYour transaction has been processed." +
-                "Press any key to view your new account balance");
+                "\nPress any key to view your new account balance.");
             Console.ReadKey();
         }     
         
