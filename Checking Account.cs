@@ -67,14 +67,14 @@ namespace Bank_Account_Project
                 
         public void ReserveAccountBalance()
         {
-            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+            Console.WriteLine("\n\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
         }
 
         public void DepositToReserve()
         {
             Console.Clear();
             Console.WriteLine("Deposit to Reserve Account" +
-                "\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
 
             Console.WriteLine("Enter deposit amount: ");
             this.deposit = Convert.ToDouble(Console.ReadLine());
@@ -89,7 +89,7 @@ namespace Bank_Account_Project
         {
             Console.Clear();
             Console.WriteLine("Withdraw from Reserve Account" +
-                "\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
 
             Console.WriteLine("Enter withdraw amount: ");
             this.withdraw = Convert.ToDouble(Console.ReadLine());
@@ -116,14 +116,14 @@ namespace Bank_Account_Project
 
         public void SavingsAccountBalance()
         {
-            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+            Console.WriteLine("\n\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
         }
 
         public void DepositToSavings()
         {
             Console.Clear();
             Console.WriteLine("Deposit to Savings Account" +
-                "\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
 
             Console.WriteLine("Enter deposit amount: ");
             this.deposit = Convert.ToDouble(Console.ReadLine());
@@ -138,7 +138,7 @@ namespace Bank_Account_Project
         {
             Console.Clear();
             Console.WriteLine("Withdraw from Savings Account" +
-                "\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
 
             Console.WriteLine("Enter withdraw amount: ");
             this.withdraw = Convert.ToDouble(Console.ReadLine());

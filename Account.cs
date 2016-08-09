@@ -190,7 +190,7 @@ namespace Bank_Account_Project
 
             if (returnHomeOption == 1)
             {
-                Home();
+                //*******************************************Home();
             }
             else if (returnHomeOption == 2)
             {
@@ -233,7 +233,7 @@ namespace Bank_Account_Project
 
             if (balanceOption == 1)
             {
-                Home();
+               //******************************************************Home();
             }
             else if (balanceOption == 2)
             {
@@ -266,7 +266,7 @@ namespace Bank_Account_Project
             Console.Clear();
 
             Console.WriteLine("Which account would you like to make a deposit to?");
-            Console.WriteLine("[1] Checking Account\n[2] Reserve Account\n[3] Savings Account\n\n[4] Home\n[5] Sign Out");
+            Console.WriteLine("\n[1] Checking Account\n[2] Reserve Account\n[3] Savings Account\n\n[4] Home\n[5] Sign Out");
         }     
         
         public void WithdrawMenu()
@@ -274,7 +274,7 @@ namespace Bank_Account_Project
             Console.Clear();
 
             Console.WriteLine("Which account would you like to make a withdraw from?");
-            Console.WriteLine("[1] Checking Account\n[2] Reserve Account\n[3] Savings Account\n\n[4] Home\n[5] Sign Out");
+            Console.WriteLine("\n[1] Checking Account\n[2] Reserve Account\n[3] Savings Account\n\n[4] Home\n[5] Sign Out");
         }               
         
     }

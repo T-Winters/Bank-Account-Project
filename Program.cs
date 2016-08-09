@@ -8,7 +8,7 @@ namespace Bank_Account_Project
 {
     
     class Program
-    {
+    {        
         static void Main(string[] args)
         {
             Account account = new Account("Chalupa Batman", "8765309-00", "Main");
@@ -17,65 +17,154 @@ namespace Bank_Account_Project
             Savings_Account savings_account = new Savings_Account("Chalupa Batman", "8765309-03");
 
 
-
-
-            Console.Clear();
-            Console.WriteLine("Welcome to Virtual Bank!\n\n" +
-                "[1] My Info\n" +
-                "[2] View My Account Balance\n" +
-                "[3] Deposit Funds\n" +
-                "[4] Withdraw funds\n" +
-                "[5] Sign Out\n");
-
-            int homeOption = 0;
-
-            string homeChoice = Console.ReadLine();
-            if (homeChoice == "1" || homeChoice == "2" || homeChoice == "3" || homeChoice == "4" || homeChoice == "5")
+            while (true)
             {
-                homeOption = Convert.ToInt32(homeChoice);
-            }
 
-            if (homeOption == 1)
-            {
-                account.MyInfo();
-            }
-            else if (homeOption == 2)
-            {
                 Console.Clear();
-                checking_account.CheckingAccountBalance();
-                reserve_account.ReserveAccountBalance();
-                savings_account.SavingsAccountBalance();
-                account.MyAccountBalance();
-            }
-            else if (homeOption == 3)
-            {
-                account.DepositMenu();
-                int depositOption = 0;
-                string depositChoice = Console.ReadLine();
-                if (depositChoice == "1" || depositChoice == "2" || depositChoice == "3" || depositChoice == "4" || depositChoice == "5")
+                Console.WriteLine("Welcome to Virtual Bank!\n\n" +
+                    "[1] My Info\n" +
+                    "[2] View My Account Balance\n" +
+                    "[3] Deposit Funds\n" +
+                    "[4] Withdraw funds\n" +
+                    "[5] Sign Out\n");
+
+                int homeOption = 0;
+
+                string homeChoice = Console.ReadLine();
+                if (homeChoice == "1" || homeChoice == "2" || homeChoice == "3" || homeChoice == "4" || homeChoice == "5")
                 {
-                    depositOption = Convert.ToInt32(depositChoice);
+                    homeOption = Convert.ToInt32(homeChoice);
                 }
-                if (depositOption == 1)
+
+                if (homeOption == 1)
                 {
-                    checking_account.DepositToChecking();
+                    account.MyInfo();
+                }
+                else if (homeOption == 2)
+                {
+                    Console.Clear();
+                    checking_account.CheckingAccountBalance();
+                    reserve_account.ReserveAccountBalance();
+                    savings_account.SavingsAccountBalance();
+                    Console.WriteLine("\n");
                     account.MyAccountBalance();
                 }
-                else if (depositOption == 2)
+                else if (homeOption == 3)
                 {
-                    reserve_account.DepositToReserve();
-                    account.MyAccountBalance();
+                    account.DepositMenu();
+                    int depositOption = 0;
+                    string depositChoice = Console.ReadLine();
+                    if (depositChoice == "1" || depositChoice == "2" || depositChoice == "3" || depositChoice == "4" || depositChoice == "5")
+                    {
+                        depositOption = Convert.ToInt32(depositChoice);
+                    }
+                    if (depositOption == 1)
+                    {
+                        checking_account.DepositToChecking();
+                        account.MyAccountBalance();
+                    }
+                    else if (depositOption == 2)
+                    {
+                        reserve_account.DepositToReserve();
+                        account.MyAccountBalance();
+                    }
+                    else if (depositOption == 3)
+                    {
+                        savings_account.DepositToSavings();
+                        account.MyAccountBalance();
+                    }
+                    else if (depositOption == 4)
+                    {
+                        //Home()
+                    }
+                    else if (depositOption == 5)
+                    {
+                        Console.WriteLine("Are you sure you want to sign out?" +
+                            "Press enter to sign out. If you do not wish to sign out, press any other key.");
+
+                        string exit = Console.ReadKey().Key.ToString();
+                        if (exit == "")
+                        {
+                            Console.WriteLine("You successfully signed out.");
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nPress any key to continue, then select from options 1 - 5.");
+                            Console.ReadKey();
+                            Console.ReadLine();
+                            depositOption = Convert.ToInt32(depositChoice);
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, that is not an option." +
+                                            "\nPress any key to continue, then select from options 1 - 5.");
+                        Console.ReadKey();
+                        Console.ReadLine();
+                        depositOption = Convert.ToInt32(depositChoice);
+                    }
                 }
-                else if (depositOption == 3)
+                else if (homeOption == 4)
                 {
-                    savings_account.DepositToSavings();
-                    account.MyAccountBalance();
+                    account.WithdrawMenu();
+                    int withdrawOption = 0;
+                    string withdrawChoice = Console.ReadLine();
+                    if (withdrawChoice == "1" || withdrawChoice == "2" || withdrawChoice == "3" || withdrawChoice == "4" || withdrawChoice == "5")
+                    {
+                        withdrawOption = Convert.ToInt32(withdrawChoice);
+                    }
+
+                    if (withdrawOption == 1)
+                    {
+                        checking_account.WithdrawFromChecking();
+                        account.MyAccountBalance();
+                    }
+                    else if (withdrawOption == 2)
+                    {
+                        reserve_account.WithdrawFromReserve();
+                        account.MyAccountBalance(); ;
+                    }
+                    else if (withdrawOption == 3)
+                    {
+                        savings_account.WithdrawFromSavings();
+                        account.MyAccountBalance();
+                    }
+                    else if (withdrawOption == 4)
+                    {
+                        //Home();
+                    }
+                    else if (withdrawOption == 5)
+                    {
+                        Console.WriteLine("Are you sure you want to sign out?" +
+                            "Press enter to sign out. If you do not wish to sign out, press any other key.");
+
+                        string exit = Console.ReadKey().Key.ToString();
+                        if (exit == "")
+                        {
+                            Console.WriteLine("You have successfully signed out.");
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nPress any key to continue, then select from options 1 - 5.");
+                            Console.ReadKey();
+                            Console.ReadLine();
+                            withdrawOption = Convert.ToInt32(withdrawChoice);
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, that is not an option." +
+                                            "\nPress any key to continue, then select from options 1 - 5.");
+                        Console.ReadKey();
+                        Console.ReadLine();
+                        withdrawOption = Convert.ToInt32(withdrawChoice);
+                    }
                 }
-                else if (depositOption == 4)
-                {
-                    Home();
-                }
-                else if (depositOption == 5)
+                else if (homeOption == 5)
                 {
                     Console.WriteLine("Are you sure you want to sign out?" +
                         "Press enter to sign out. If you do not wish to sign out, press any other key.");
@@ -83,12 +172,15 @@ namespace Bank_Account_Project
                     string exit = Console.ReadKey().Key.ToString();
                     if (exit == "")
                     {
-                        Console.WriteLine("You successfully signed out.");
+                        Console.WriteLine(account.AccountName + " signed out.");
                         Environment.Exit(0);
                     }
                     else
                     {
-                        account.DepositMenu();
+                        Console.WriteLine("\nPress any key to continue, then select from options 1 - 5.");
+                        Console.ReadKey();
+                        Console.ReadLine();
+                        homeOption = Convert.ToInt32(homeChoice);
                     }
 
                 }
@@ -97,88 +189,26 @@ namespace Bank_Account_Project
                     Console.WriteLine("Sorry, that is not an option." +
                                         "\nPress any key to continue, then select from options 1 - 5.");
                     Console.ReadKey();
-                    Home();
-                }
-            }
-            else if (homeOption == 4)
-            {
-                account.WithdrawMenu();
-                int withdrawOption = 0;
-                string withdrawChoice = Console.ReadLine();
-                if (withdrawChoice == "1" || withdrawChoice == "2" || withdrawChoice == "3" || withdrawChoice == "4" || withdrawChoice == "5")
-                {
-                    withdrawOption = Convert.ToInt32(withdrawChoice);
+                    homeOption = Convert.ToInt32(homeChoice);
                 }
 
-                if (withdrawOption == 1)
-                {
-                    checking_account.WithdrawFromChecking();
-                    account.MyAccountBalance();
-                }
-                else if (withdrawOption == 2)
-                {
-                    reserve_account.WithdrawFromReserve();
-                    account.MyAccountBalance(); ;
-                }
-                else if (withdrawOption == 3)
-                {
-                    savings_account.WithdrawFromSavings();
-                    account.MyAccountBalance();
-                }
-                else if (withdrawOption == 4)
-                {
-                    Home();
-                }
-                else if (withdrawOption == 5)
-                {
-                    Console.WriteLine("Are you sure you want to sign out?" +
-                        "Press enter to sign out. If you do not wish to sign out, press any other key.");
 
-                    string exit = Console.ReadKey().Key.ToString();
-                    if (exit == "")
+                while (true)
+                {
+                    Console.WriteLine("Wanna exit?");
+                    string ans = Console.ReadLine();
+                    if (ans == "yes")
                     {
-                        Console.WriteLine("You have successfully signed out.");
                         Environment.Exit(0);
                     }
-                    else
+                    if (ans == "NO")
                     {
-                        account.WithdrawMenu();
+                        return;
                     }
 
                 }
-                else
-                {
-                    Console.WriteLine("Sorry, that is not an option." +
-                                        "\nPress any key to continue, then select from options 1 - 5.");
-                    Console.ReadKey();
-                    Home();
-                }
+                
             }
-            else if (homeOption == 5)
-            {
-                Console.WriteLine("Are you sure you want to sign out?" +
-                    "Press enter to sign out. If you do not wish to sign out, press any other key.");
-
-                string exit = Console.ReadKey().Key.ToString();
-                if (exit == "")
-                {
-                    Console.WriteLine(account.AccountName + " signed out.");
-                    Environment.Exit(0);
-                }
-                else
-                {
-                    Home();
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("Sorry, that is not an option." +
-                                    "\nPress any key to continue, then select from options 1 - 5.");
-                Console.ReadKey();
-                Home();
-            }
-
 
             
         }
