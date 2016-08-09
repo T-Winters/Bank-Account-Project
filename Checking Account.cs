@@ -7,146 +7,81 @@ using System.Threading.Tasks;
 namespace Bank_Account_Project
 {
     public class Checking_Account : Account
-    {
-        protected double startingBalance;
-        protected double newBalance;
-
+    {                       
         public Checking_Account(string name, string accountNumber) : base(name, accountNumber, "Checking")
         {
-            this.startingBalance = 10000;
-            this.newBalance = this.startingBalance + this.deposit - this.withdraw;
+            this.balance = 10000;
         }
-
+               
         public void CheckingAccountBalance()
         {
-            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+            Console.Clear();
+            Console.WriteLine("Checking Account Balance");
+            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance +"\n\n");
+            Exit();                        
         }
 
-        public void DepositToChecking()
+        public override void Transaction()
         {
-            Console.Clear();
-            Console.WriteLine("Deposit to Checking Account" +
-                "\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
-
-            Console.WriteLine("Enter deposit amount: ");
-                this.deposit = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Your deposit has been received. Press Enter to view your balance.");
-            Console.ReadKey();
-            Console.Clear();
-            CheckingAccountBalance();    
+            base.Transaction();
         }
 
-        public void WithdrawFromChecking()
+        public override void Exit()
         {
-            Console.Clear();
-            Console.WriteLine("Withdraw from Checking Account" +
-                "\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
-
-            Console.WriteLine("Enter withdraw amount: ");
-            this.withdraw = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Your withdraw has been received. Press Enter to view your balance.");
-            Console.ReadKey();
-            Console.Clear();
-            CheckingAccountBalance();
+            base.Exit();
         }
     }
 
 
     public class Reserve_Account : Account
-    {
-        protected double startingBalance;
-        protected double newBalance;
-
+    {            
         public Reserve_Account(string name, string accountNumber) : base(name, accountNumber, "Reserve")
         {
-            this.startingBalance = 20000;
-            this.newBalance = this.startingBalance + this.deposit - this.withdraw;
+            this.balance = 20000;
         }
-                
+
         public void ReserveAccountBalance()
         {
-            Console.WriteLine("\n\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+            Console.Clear();
+            Console.WriteLine("Reserve Account Balance");
+            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
+            Exit();
         }
 
-        public void DepositToReserve()
+        public override void Transaction()
         {
-            Console.Clear();
-            Console.WriteLine("Deposit to Reserve Account" +
-                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
-
-            Console.WriteLine("Enter deposit amount: ");
-            this.deposit = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Your deposit has been received. Press Enter to view your balance.");
-            Console.ReadKey();
-            Console.Clear();
-            ReserveAccountBalance();
+            base.Transaction();
         }
 
-        public void WithdrawFromReserve()
+        public override void Exit()
         {
-            Console.Clear();
-            Console.WriteLine("Withdraw from Reserve Account" +
-                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
-
-            Console.WriteLine("Enter withdraw amount: ");
-            this.withdraw = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Your withdraw has been received. Press Enter to view your balance.");
-            Console.ReadKey();
-            Console.Clear();
-            ReserveAccountBalance();
+            base.Exit();
         }
-
-
     }
 
     public class Savings_Account : Account
-    {
-        protected double startingBalance;
-        protected double newBalance;
-
+    {       
         public Savings_Account(string name, string accountNumber) : base(name, accountNumber, "Savings")
         {
-            this.startingBalance = 50000;
-            this.newBalance = this.startingBalance + this.deposit - this.withdraw;
+            this.balance = 50000;
         }
 
         public void SavingsAccountBalance()
         {
-            Console.WriteLine("\n\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
+            Console.Clear();
+            Console.WriteLine("Savings Account Balance");
+            Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
+            Exit();
         }
 
-        public void DepositToSavings()
+        public override void Transaction()
         {
-            Console.Clear();
-            Console.WriteLine("Deposit to Savings Account" +
-                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
-
-            Console.WriteLine("Enter deposit amount: ");
-            this.deposit = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Your deposit has been received. Press Enter to view your balance.");
-            Console.ReadKey();
-            Console.Clear();
-            SavingsAccountBalance();
+            base.Transaction();
         }
 
-        public void WithdrawFromSavings()
+        public override void Exit()
         {
-            Console.Clear();
-            Console.WriteLine("Withdraw from Savings Account" +
-                "\n" + this.accountType + "\t\t" + this.accountNumber + "\t\t" + "$" + this.newBalance);
-
-            Console.WriteLine("Enter withdraw amount: ");
-            this.withdraw = Convert.ToDouble(Console.ReadLine());
-
-            Console.WriteLine("Your withdraw has been received. Press Enter to view your balance.");
-            Console.ReadKey();
-            Console.Clear();
-            SavingsAccountBalance();
+            base.Exit();
         }
     }
 }
