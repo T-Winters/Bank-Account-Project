@@ -30,7 +30,7 @@ namespace Bank_Account_Project
                     "[1] My Info\n" +
                     "[2] View My Account Balance\n" +
                     "[3] Deposit Funds\n" +
-                    "[4] Withdraw funds\n" +
+                    "[4] Withdraw Funds\n" +
                     "[5] Sign Out\n");
 
                 int homeOption = int.Parse(Console.ReadLine());
@@ -39,14 +39,15 @@ namespace Bank_Account_Project
                 {
                     case 1:
                         account.MyInfo();
+                        account.MyInfo();
                         break;
                     case 2:
                         Console.Clear();
                         checking_account.AccountBalance();
                         reserve_account.AccountBalance();
                         savings_account.AccountBalance();
-                        Console.WriteLine("\n");
                         account.Exit();
+                        //***********************************needs to loop back to case 2 if account.Exit != 1 || 2
                         break;
                     case 3:
                         Console.Clear();
@@ -62,22 +63,22 @@ namespace Bank_Account_Project
                         if (depositOption == 1)
                         {
                             Console.Clear();
-                            Console.WriteLine("Checking Account Transaction\n\n");
-                            checking_account.Transaction();
+                            Console.WriteLine("Checking Account Deposit\n\n");
+                            checking_account.NewDeposit();
                             account.Exit();
                         }
                         else if (depositOption == 2)
                         {
                             Console.Clear();
-                            Console.WriteLine("Reserve Account Transaction\n\n");
-                            reserve_account.Transaction();
+                            Console.WriteLine("Reserve Account Deposit\n\n");
+                            reserve_account.NewDeposit();
                             account.Exit();
                         }
                         else if (depositOption == 3)
                         {
                             Console.Clear();
-                            Console.WriteLine("Savings Account Transaction\n\n");
-                            savings_account.Transaction();
+                            Console.WriteLine("Savings Account Deposit\n\n");
+                            savings_account.NewDeposit();
                             account.Exit();
                         }
                         else if (depositOption == 4)
@@ -92,6 +93,8 @@ namespace Bank_Account_Project
                         else
                         {
                             account.NotAnOption();
+                            //*************************   needs to loop back to beginning of case3 if depositOption != 1,2,3,4, or 5                                             
+
                         }
                         break;
                     case 4:
@@ -109,22 +112,22 @@ namespace Bank_Account_Project
                         if (withdrawOption == 1)
                         {
                             Console.Clear();
-                            Console.WriteLine("Checking Account Transaction\n\n");
-                            checking_account.Transaction();
+                            Console.WriteLine("Checking Account Withdraw\n\n");
+                            checking_account.NewWithdraw();
                             account.Exit(); ;
                         }
                         else if (withdrawOption == 2)
                         {
                             Console.Clear();
-                            Console.WriteLine("Reserve Account Transaction\n\n");
-                            reserve_account.Transaction();
+                            Console.WriteLine("Reserve Account Withdraw\n\n");
+                            reserve_account.NewWithdraw();
                             account.Exit();
                         }
                         else if (withdrawOption == 3)
                         {
                             Console.Clear();
-                            Console.WriteLine("Savings Account Transaction\n\n");
-                            savings_account.Transaction();
+                            Console.WriteLine("Savings Account Withdraw\n\n");
+                            savings_account.NewWithdraw();
                             account.Exit();
                         }
                         else if (withdrawOption == 4)
@@ -138,6 +141,7 @@ namespace Bank_Account_Project
                         else
                         {
                             account.NotAnOption();
+                            //*************************   needs to loop back to beginning of case3 if withdrawOption != 1,2,3,4, or 5                                             
                         }
                         break;
                     case 5:
@@ -145,11 +149,13 @@ namespace Bank_Account_Project
                         break;
                     default:
                         account.NotAnOption();
+                        account.SignOut();
                         break;
                 }
             }
         }
     }
 }
+
 
 

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Bank_Account_Project
 {
-   
+
     public class Account
     {
-        
+
         public string accountName;
         public string accountNumber;
         public string accountType;
@@ -103,8 +103,8 @@ namespace Bank_Account_Project
             this.accountName = accountName;
             this.accountNumber = accountNumber;
             this.accountType = accountType;
-        }     
-     
+        }
+
         public void MyInfo()
         {
             Console.Clear();
@@ -121,14 +121,14 @@ namespace Bank_Account_Project
         }
 
         public virtual void Home()
-        {          
-            
+        {
+
         }
 
         public virtual void Exit()
         {
             {
-                Console.WriteLine("\n[1] Home\n[2] Sign Out");
+                Console.WriteLine("\n\n[1] Home\n[2] Sign Out");
 
                 int exit = 0;
 
@@ -144,24 +144,29 @@ namespace Bank_Account_Project
                 }
                 else if (exit == 2)
                 {
-                    SignOut();                    
+                    SignOut();
                 }
-                
+                else
+                {
+                    Console.WriteLine("\nSorry, that is not an option." +
+                                            "\nPress any key to continue, then select from options 1 - 2.");
+                    Console.ReadKey();
+                }
+
             }
         }
 
         public void NotAnOption()
         {
-            Console.WriteLine("Sorry, that is not an option." +
+            Console.WriteLine("\nSorry, that is not an option." +
                                             "\nPress any key to continue, then select from options 1 - 5.");
             Console.ReadKey();
-            Console.ReadLine();
         }
 
         public void SignOut()
         {
-            Console.WriteLine("Are you sure you want to sign out?" +
-                        "\n[1] Yes\n[2] No");
+            Console.WriteLine("\nAre you sure you want to sign out?" +
+                        "\n\n[1] Yes\n[2] No");
             int signOut = 0;
             string signOutChoice = Console.ReadLine();
             if (signOutChoice == "1" || signOutChoice == "2" || signOutChoice == "3" || signOutChoice == "4" || signOutChoice == "5")
@@ -180,83 +185,63 @@ namespace Bank_Account_Project
             }
             else
             {
-                Console.WriteLine("\nSorry, that is not an option.");
-                Console.WriteLine("\n[1] Yes\n[2] No");
-                Console.ReadLine();
-            }                       
+                Console.WriteLine("\nSorry, that is not an option." +
+                                            "\nPress any key to continue, then select from options 1 - 2.");
+                Console.ReadKey();
+            }
         }
 
         public virtual void AccountBalance()
         {
-            Console.Clear();
             Console.WriteLine("\n\n" + this.accountType + "\t" + this.accountNumber + "\t\t" + "$" + this.balance + "\n\n");
             Exit();
         }
 
-        public virtual void Transaction()
+
+        /* This is our deposit function */
+        public virtual void NewDeposit()
         {
-            Console.Clear();
-            Console.WriteLine("Pick a type of transaction to be made.");
-            Console.WriteLine("\n\n[1] Deposit\n[2] Withdraw");
-
-            int transaction = int.Parse(Console.ReadLine());
-            if (transaction == 1)
-            {
-                Console.WriteLine("Enter Deposit Amount: ");
-                double depositAmount = Convert.ToDouble(Console.ReadLine());
-                this.deposit = (depositAmount);
-                this.balance += this.deposit;
-
-                if (depositAmount < 1)
-                {
-                    Console.WriteLine("Deposits must be a minimum of $1 (one U.S. dollar).");
-                    Console.WriteLine("\nPress any key to start a new transaction.");
-                    Console.ReadKey();
-                    Transaction();
-                }
-                else
-                {
-                    
-                }
-            }
-            else if (transaction == 2)
-            {
-                Console.WriteLine("Enter Withdraw Amount?");
-                double withdrawAmount = Convert.ToDouble(Console.ReadLine());
-                this.withdraw = (withdrawAmount);
-                this.balance -= this.withdraw;
-
-                if (withdrawAmount < 1)
-                {
-                    Console.WriteLine("Withdrawls must be a minimum of $1 (one U.S. dollar)");
-                    Console.WriteLine("\nPress any key to start a new transaction.");
-                    Console.ReadKey();
-                    Transaction();
-                }
-                else
-                {
-                    
-                }
-            }
-            else
-            {
-                Console.WriteLine("Sorry, that is not an option." +
-                    "Press any key to start a new transaction");
-                Console.ReadKey();
-                Transaction();
-            }
+            Console.WriteLine("Enter Deposit Amount: ");
+            double depositAmount = Convert.ToDouble(Console.ReadLine());
+            this.deposit = (depositAmount);
+            this.balance += this.deposit;
             Console.WriteLine("\nYour transaction has been processed." +
-                "\nPress any key to view your new account balance.");
+                "\nPress any key to view your account balance.");
             Console.ReadKey();
-        }     
-        
-                       
-        
+            Console.Clear();
+
+            if (depositAmount < 1)
+            {
+                Console.WriteLine("\nDeposits must be a minimum of $1 (one U.S. dollar)." +
+                    "\nPress any key to perform a new transaction.");
+                Console.ReadKey();
+                NewDeposit();
+            }
+        }
+
+        /* This is our withdraw function */
+        public virtual void NewWithdraw()
+        {
+            Console.WriteLine("Enter Withdraw Amount: ");
+            double withdrawAmount = Convert.ToDouble(Console.ReadLine());
+            this.withdraw = (withdrawAmount);
+            this.balance -= this.withdraw;
+            Console.WriteLine("\nYour transaction has been processed." +
+                "\nPress any key to view your account balance.");
+            Console.ReadKey();
+            Console.Clear();
+            if (withdrawAmount < 1)
+            {
+                Console.WriteLine("\nDeposits must be a minimum of $1 (one U.S. dollar)." +
+                    "\nPress any key to perform a new transaction.");
+                Console.ReadKey();
+                NewWithdraw();
+            }
+        }
     }
-    
 }
 
 
 
 
- 
+
